@@ -11,12 +11,11 @@ class DisplayFilm extends Component {
             savedList: []
         }
     }
-    saveFilm = (e) => {
+    saveFilm = (e,film) => {
         e.preventDefault();
-        this.props.saveToDatabase(e.target.id);
+        this.props.saveToDatabase(film);
     }
     render() {
-        console.log('constructor',this.props);
         return (
             <section className="displayResults">
                 <h2>You should watch these...</h2>
@@ -30,7 +29,7 @@ class DisplayFilm extends Component {
                             <button className="moreInfoButton">More Information</button>
                             {/* <MoreInfo /> */}
                             {/* <p className="filmSynopsis">{film.overview}</p> */}
-                            <button onClick={this.saveFilm} id={film.id} className="saveButton">Save for Later</button>
+                            <button onClick={(e) => this.saveFilm(e,film)} id={film.id} className="saveButton">Save for Later</button>
                         </div>
                     )
                 })}

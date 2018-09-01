@@ -60,6 +60,7 @@ class CategorySearch extends Component {
     render() {
         return (
             <section>
+                <h2>Pick a Category</h2>
                 <div>
                     <figure>
                         <img src="" alt=""/>

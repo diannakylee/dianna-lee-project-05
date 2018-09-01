@@ -25,11 +25,14 @@ class App extends Component {
   }
   savedItemsArray = (dbObject) => {
     // this takes the firebase object that holds the objects of information and turns it into an array
+    if(dbObject ===  null) {
+      dbObject = {}
+    }
     const savedFilms = Object.entries(dbObject)
                         .map((item)=> {
                           return ({
                             key: item[0],
-                            filmKey: item[1].filmID,
+                            film: item[1].film,
                           });
                         });
     this.setState ({
@@ -38,14 +41,19 @@ class App extends Component {
     console.log("state saved films", this.state.savedList);
     // use length of the saved list to use as a counter for the saved films counter in header
   }
-  saveToDatabase = (filmID) => {
+  saveToDatabase = (film) => {
     dbRef.push({
-      filmID: filmID,
+      film,
     })
   }
   deleteFilm = (filmKey) => {
     const filmDBRef = firebase.database().ref(`/${filmKey}`);
     filmDBRef.remove();
+  }
+  savedFilmCounter = () => {
+    const countFilm = this.state.savedList.length;
+    console.log(`count film`, countFilm);
+    
   }
   addToFilmList = (list) => {
       const newList = Array.from(list);
@@ -64,7 +72,7 @@ class App extends Component {
         <CategorySearch addToFilmList={this.addToFilmList}/>
         <DisplayFilm filmList={this.state.filmList} saveToDatabase={this.saveToDatabase}/>
         {/* <MoreInfo /> */}
-        <SavedFilms savedList={this.state.savedList} deleteFilm={this.deleteBook}/>
+        <SavedFilms savedList={this.state.savedList} deleteFilm={this.deleteFilm}/>
       </div>
     );
   }
