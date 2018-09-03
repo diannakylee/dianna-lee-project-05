@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import './App.css';
-import CategorySearch from './CategorySearch';
-import LandingPage from './functions/LandingPage';
-import DisplayFilm from './DisplayFilm';
 import firebase from './firebase';
-import SavedFilms from './SavedFilms'
+import './App.css';
+import CategorySearch from './components/CategorySearch';
+import LandingPage from './functions/LandingPage';
+import DisplayFilm from './components/DisplayFilm';
+import SavedFilms from './components/SavedFilms'
+import NavBar from './NavBar';
+import {
+  BrowserRouter as Router,
+  Route, Link
+} from 'react-router-dom';
 
 const dbRef = firebase.database().ref();
 
@@ -41,41 +46,62 @@ class App extends Component {
     console.log("state saved films", this.state.savedList);
     // use length of the saved list to use as a counter for the saved films counter in header
   }
+
+  // this is a function set up to save films into firebase.  Used to pass down to Display Films.
   saveToDatabase = (film) => {
     dbRef.push({
       film,
     })
   }
+
+  // this is a function set up to delete films into firebase.  Used to pass down to Saved Films.
   deleteFilm = (filmKey) => {
     const filmDBRef = firebase.database().ref(`/${filmKey}`);
     filmDBRef.remove();
   }
+
+  // function to keep count of number of films saved in firebase.
   savedFilmCounter = () => {
     const countFilm = this.state.savedList.length;
     console.log(`count film`, countFilm);
     
   }
+
+  // function passed into category search.
   addToFilmList = (list) => {
       const newList = Array.from(list);
       this.setState ({
         filmList: newList
       })      
   }
-  // deleteFilm = (id) => {
-  //   const filmdbRef = firebase.database().ref(`/${id}`);
-  //   filmdbRef.remove();
-  // }
   render() {
     return (
-      <div className="App">
-        <LandingPage />
-        <CategorySearch addToFilmList={this.addToFilmList}/>
-        <DisplayFilm filmList={this.state.filmList} saveToDatabase={this.saveToDatabase}/>
-        {/* <MoreInfo /> */}
-        <SavedFilms savedList={this.state.savedList} deleteFilm={this.deleteFilm}/>
-      </div>
+      // <Router>
+        <div className="App">
+          <NavBar />
+          {/* <header>
+            <h1>Let's be real</h1>
+            <Link to="/">Home</Link>
+          </header> */}
+          <LandingPage />
+          {/* <Route exact path="" component={LandingPage} /> */}
+          <CategorySearch addToFilmList={this.addToFilmList} />
+          {/* <Route exact path="/categories" component={CategorySearch} /> */}
+          <DisplayFilm filmList={this.state.filmList} saveToDatabase={this.saveToDatabase} />
+          {/* <Route exact path="/results" component={DisplayFilm} /> */}
+          <SavedFilms savedList={this.state.savedList} deleteFilm={this.deleteFilm} />
+          {/* <Route exact path="/saved" component={SavedFilms} /> */}
+        </div>
+      // </Router>
     );
   }
 }
 
 export default App;
+
+
+// {/* <LandingPage />
+//   <CategorySearch addToFilmList={this.addToFilmList} />
+//   <DisplayFilm filmList={this.state.filmList} saveToDatabase={this.saveToDatabase} />
+//           {/* <MoreInfo /> */ }
+// <SavedFilms savedList={this.state.savedList} deleteFilm={this.deleteFilm} /> */}

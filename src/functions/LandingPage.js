@@ -2,12 +2,18 @@ import React from 'react';
 
 const LandingPage = () => {
     return (
-        <header>
-            <h1>Let's Be Real</h1>
-            <h2>A documentary suggestion engine</h2>
-            <button>Start Now</button>
-        </header>
+        <section className="landingPage">
+            <div className="wrapper">
+                <h1>THIS IS REAL LIFE</h1>
+                <h2>A documentary suggestion engine</h2>
+                <div>
+                    <button>Start Now</button>
+                </div>
+            </div>
+        </section>
     )
 }
 
 export default LandingPage;
+
+//Photo by Joshua Hanks on Unsplash

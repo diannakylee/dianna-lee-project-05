@@ -1,0 +1,23 @@
+/* Navigation */
+
+.navigation {
+    position: absolute;
+    right: 0;
+}
+
+.navigation ul {
+    display: flex;
+    list-style: none;
+    margin-top: 30px;
+    margin-right: 40px;
+}
+
+.navigation ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 15px;
+}
+
+.navigation ul li a:hover {
+    color: lightblue;
+}

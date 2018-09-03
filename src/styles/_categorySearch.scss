@@ -1,0 +1,74 @@
+/* Categories Page */
+
+.categories {
+    background: white;
+}
+
+.categories .wrapper {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.sectionHeading, .filmTitle {
+    flex-basis: 100%;
+}
+
+.categoryButton {
+    width: calc(100% / 4 - 20px);
+    height: 200px;
+    display: block;
+    margin: 10px;
+    color: white;
+    font-size: 2.4rem;
+    text-transform: uppercase;
+    font-family: "Karla"
+}
+
+.categoryButton:hover {
+    cursor: pointer;
+    font-size: 3rem;
+}
+
+.cat--Sport {
+    background-image: url("./assets/josh-nuttall-305072-sport.jpg");
+    background-size: cover;
+}
+
+.cat--Nature {
+    background-image: url("./assets/daniil-silantev-318853-nature.jpg");
+    background-size: cover;
+}
+
+.cat--Culture {
+    background-image: url("./assets/vitaliy-lyubezhanin-385454-culture.jpg");
+    background-size: cover;
+}
+
+.cat--Music {
+    background-image: url("./assets/edward-cisneros-411006-music.jpg");
+    background: linear-gradient(0,0,0, 0.4);
+    background-size: cover;
+}
+
+.cat--War {
+    background-image: url("./assets/israel-palacio-463979-war.jpg");
+    background-size: cover;
+    background: linear-gradient(0,0,0, 0.4);
+}
+
+.cat--Justice {
+    background-image: url("./assets/clem-onojeghuo-381204-justice.jpg");
+    background-size: cover;
+}
+
+.cat--Art {
+    background-image: url("./assets/steve-johnson-643285-art.jpg");
+    background-size: cover;
+}
+
+.cat--Architecture {
+    background-image: url("./assets/coline-beulin-603726-architecture.jpg");
+    background-size: cover;
+}

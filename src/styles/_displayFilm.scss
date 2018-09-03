@@ -1,0 +1,44 @@
+/* Display Film */
+
+.displayResults .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 0 auto;
+}
+
+.eachFilm {
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(100% / 3 - 20px);
+    margin: 10px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 15px;
+}
+
+.eachFilm figure {
+    width:150px;
+}
+
+.filmTitle {
+    text-align: center;
+}
+
+.filmInfo {
+    
+}
+
+.filmImage, .filmOptions {
+    width: 50%;
+    margin-left: 15px;
+}
+
+/* Saved Film */
+
+.savedResults {
+    background-color: white;
+}
+
+.savedFilmInfo {
+    text-align: center;
+    padding: 10px;
+}
