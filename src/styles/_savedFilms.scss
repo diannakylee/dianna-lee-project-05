@@ -1,0 +1,51 @@
+/* Saved Film */
+
+.savedResults {
+    background-color: white;
+    padding: 50px;
+}
+
+.savedFilms {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.eachFilm--saved {
+    width: 48%;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    margin: 2.5% 0;
+    border: 3px solid gold;
+}
+
+.savedFilmImage {
+    width: 40%;
+    margin: 15px;
+}
+
+.savedFilmInfo {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    justify-content: center;
+    padding: 10px;
+}
+
+.deleteButton {
+    background: gold;
+    width: 50px;
+    height: 50px;
+    font-size: 2rem;
+    border-radius: 100%;
+    position: absolute;
+    bottom: -20px;
+    right: -15px;
+    z-index: 99;
+    transition: all 200ms;
+    &:hover {
+        background: white;
+        color: gold;
+    }
+}

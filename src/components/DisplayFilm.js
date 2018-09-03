@@ -20,29 +20,32 @@ class DisplayFilm extends Component {
         return (
             <section className="displayResults">
                 <div className="wrapper">
-                    <h2 className="sectionHeading">You should watch these...</h2>
+                    <div>
+                        <h2 className="sectionHeading">You should watch these...</h2>
+                    </div>
+                    <div className="filmSection">
                     {this.props.filmList.map((film) => {
                         return (
                             <div className="eachFilm" id={film.id}>
-                                <div className="filmTitle">
-                                    <h3>{film.title}</h3>
-                                </div>
+                                <figure className="filmImage">
+                                    <img src={`http://image.tmdb.org/t/p/w500/${film.poster_path}`} alt=""/>
+                                </figure>
                                 <div className="filmInfo">
-                                    <figure className="filmImage">
-                                        <img src={`http://image.tmdb.org/t/p/w500/${film.poster_path}`} alt=""/>
-                                    </figure>
+                                    <div className="filmTitle">
+                                        <h3>{film.title}</h3>
+                                    </div>
                                     <div className="filmOptions">
-                                        <div>
+                                        {/* <div>
                                             <p>Release Date:</p>
                                             <p>{film.release_date}</p>
-                                        </div>
+                                        </div> */}
                                         <div>
-                                            <button className="moreInfoButton">More Information</button>
+                                            <button className="displayButton displayButtonTop moreInfoButton"><i class="fas fa-info"></i></button>
                                         </div>
                                         {/* <MoreInfo /> */}
                                         {/* <p className="filmSynopsis">{film.overview}</p> */}
                                         <div>
-                                            <button onClick={(e) => this.saveFilm(e,film)} id={film.id} className="saveButton">Save for Later</button>
+                                            <button onClick={(e) => this.saveFilm(e, film)} id={film.id} className=" displayButton displayButtonBottom saveButton"><i class="far fa-save"></i></button>
                                         </div>
 
                                     </div>
@@ -50,6 +53,7 @@ class DisplayFilm extends Component {
                             </div>
                         )
                     })}
+                    </div>
                 </div>
             </section>
         )

@@ -21,28 +21,31 @@ class SavedFilms extends Component {
 // render a div for each film
     render () {
         return (
-            <section className="savedResults">
+            <section id="saved" className="savedResults">
                 <div className="wrapper">
                     <h2 className="sectionHeading">Your Saved Films</h2>
-            
+                    <div className="savedFilms">
                     {this.state.savedList.map((film)=>{
                         console.log(`savedlist`, film.film.id);
                             return(
-                                <div className="eachFilm --saved">
-                                    <div className="filmTitle">
-                                        <h3>{film.film.title}</h3>
-                                    </div>
+                                <div className="eachFilm--saved">
+                                    <figure className="savedFilmImage">
+                                        <img src={`http://image.tmdb.org/t/p/w500/${film.film.poster_path}`} alt="" />
+                                    </figure>
                                     <div className="savedFilmInfo">
-                                        <figure className="filmImage">
-                                            <img src={`http://image.tmdb.org/t/p/w500/${film.film.poster_path}`} alt="" />
-                                        </figure>
-                                        <p>{film.film.overview}</p>
-                                        <button onClick={() => this.props.deleteFilm(film.key)} id={film.key}>Delete</button>
+                                        <div className="filmTitle">
+                                            <h3>{film.film.title}</h3>
+                                        </div>
+                                        <div>
+                                            <p>{film.film.overview}</p>
+                                        </div>
+                                        <button class="deleteButton" onClick={() => this.props.deleteFilm(film.key)} id={film.key}><i class="fas fa-trash-alt"></i></button>
                                     </div>
                                 </div>
                             )}
                     )
                 }
+                    </div>
                 </div>
             </section>
         )}

@@ -185,45 +185,86 @@ button {
 
 /* Navigation */
 .navigation {
-  position: absolute;
-  right: 0; }
+  position: fixed;
+  width: 100%;
+  z-index: 101; }
 
-.navigation ul {
+.navUL {
   display: flex;
   list-style: none;
   margin-top: 30px;
-  margin-right: 40px; }
+  justify-content: flex-end; }
 
 .navigation ul li a {
-  color: white;
+  color: gold;
+  font-size: 2rem;
+  text-shadow: 1px 1px #e0626c;
   text-decoration: none;
-  padding: 5px 15px; }
+  padding: 5px 0 5px 30px; }
 
 .navigation ul li a:hover {
   color: lightblue; }
 
 /* Categories Page */
 .categories {
-  background: white; }
+  background: white;
+  height: 100vh; }
 
-.categories .wrapper {
+.cat {
+  height: 100vh;
   display: flex;
-  /* justify-content: center; */
-  align-items: center;
-  flex-wrap: wrap; }
+  flex-direction: column;
+  justify-content: center; }
+  @media (max-width: 480px) {
+    .cat {
+      width: 100%; } }
 
 .sectionHeading, .filmTitle {
-  flex-basis: 100%; }
+  flex-basis: 100%;
+  text-align: left; }
+
+.buttonSection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; }
 
 .categoryButton {
-  width: calc(100% / 4 - 20px);
+  width: calc(100% / 4 - 10px);
   height: 200px;
   display: block;
-  margin: 10px;
-  color: white;
+  margin: 2.5px 5px;
+  color: gold;
+  font-weight: 700;
+  text-shadow: 2px 4px white;
   font-size: 2.4rem;
   text-transform: uppercase;
   font-family: "Karla"; }
+  @media (max-width: 900px) {
+    .categoryButton {
+      width: calc(100% / 3 - 10px); } }
+  @media (max-width: 570px) {
+    .categoryButton {
+      width: calc(100% / 2 - 10px);
+      height: 150px; } }
+  @media (max-width: 480px) {
+    .categoryButton {
+      width: 100%;
+      height: 70px;
+      margin: 0;
+      border-radius: 0; } }
+
+@media (max-width: 900px) {
+  .categoryButton__last {
+    width: calc(100% / 2 - 10px); } }
+
+@media (max-width: 570px) {
+  .categoryButton__last {
+    height: 150px; } }
+
+@media (max-width: 480px) {
+  .categoryButton__last {
+    width: 100%;
+    height: 70px; } }
 
 .categoryButton:hover {
   cursor: pointer;

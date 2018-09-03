@@ -4,6 +4,23 @@
 @import "styles/_navBar.scss";
 @import "styles/_categorySearch.scss";
 
+@mixin bp($point) {
+  @if $point == 1068 {
+    @media (max-width: 1068px) { @content; }
+  }
+  @else if $point == 900 {
+    @media (max-width: 900px) { @content; }
+  }
+  @else if $point == 736 {
+    @media (max-width: 736px)  { @content; }
+  }
+  @else if $point == 570 {
+    @media (max-width: 570px) { @content; }
+  }
+  @else if $point == 480 {
+    @media (max-width: 480px)  { @content; }
+  }
+}
 
 .App {
   text-align: center;

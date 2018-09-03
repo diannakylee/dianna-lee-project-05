@@ -2,29 +2,70 @@
 
 .categories {
     background: white;
+    height: 100vh;
 }
 
-.categories .wrapper {
+.cat {
+    height: 100vh;
     display: flex;
-    /* justify-content: center; */
-    align-items: center;
-    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    @include bp (480) {
+        width: 100%;
+    }
 }
 
 .sectionHeading, .filmTitle {
     flex-basis: 100%;
+    text-align: left;
+}
+
+.buttonSection {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .categoryButton {
-    width: calc(100% / 4 - 20px);
+    width: calc(100% / 4 - 10px);
     height: 200px;
     display: block;
-    margin: 10px;
-    color: white;
+    margin: 2.5px 5px;
+    color: gold;
+    font-weight: 700;
+    text-shadow: 2px 4px white;
     font-size: 2.4rem;
     text-transform: uppercase;
-    font-family: "Karla"
+    font-family: "Karla";
+    @include bp(900) {
+        width: calc(100% / 3 - 10px);
+    }
+    @include bp (570) {
+        width: calc(100% / 2 - 10px);
+        height: 150px;
+    }
+    @include bp(480) {
+        width: 100%;
+        height: 70px;
+        margin: 0;
+        border-radius: 0;
+    }
 }
+
+.categoryButton__last {
+    @include bp(900) {
+        width: calc(100% / 2 - 10px);
+    }
+    @include bp(570) {
+        height: 150px;
+    }
+    @include bp(480) {
+        width: 100%;
+        height: 70px;
+    }
+}
+
+
 
 .categoryButton:hover {
     cursor: pointer;

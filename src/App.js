@@ -64,7 +64,6 @@ class App extends Component {
   savedFilmCounter = () => {
     const countFilm = this.state.savedList.length;
     console.log(`count film`, countFilm);
-    
   }
 
   // function passed into category search.

@@ -1,0 +1,58 @@
+// Landing Page
+
+.landingPage {
+    height: 100vh;
+}
+
+.landingPage .wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    align-items: flex-end;
+    @include bp(736) {
+        align-items: center;
+    }
+}
+
+.landingPage .wrapper h1 {
+    color: gold;
+    @include bp (736) {
+        font-size: 5.2rem;
+    }
+    @include bp (570) {
+        font-size: 4rem;
+    }
+}
+
+.landingPage .wrapper h2 {
+    color: white;
+    text-transform: lowercase;
+    @include bp (736) {
+        font-size: 2.4rem;
+    }
+    @include bp (570) {
+        font-size: 1.8rem;
+    }
+}
+
+.start {
+    background: gold;
+    transition: all 400ms;
+    width: 200px;
+    padding: 8px 0;
+}
+
+.hoverReveal {
+    display: none;
+    transition: all 600ms;
+}
+
+.start:hover {
+    background-color: white;
+}
+
+.start:hover span {
+    display: inline;
+}
+

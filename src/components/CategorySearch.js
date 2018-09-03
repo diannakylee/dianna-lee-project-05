@@ -54,25 +54,29 @@ class CategorySearch extends Component {
     // Create a separate array with 6 films
     finalFilmList = (array) => {
         const filmResults = Array.from(array);
-        const sixFilms = filmResults.slice(0,6);
+        const eightFilms = filmResults.slice(0,8);
         this.setState ({
-            filmList: sixFilms
+            filmList: eightFilms
         })     
         this.props.addToFilmList(this.state.filmList);
     }
     render() {
         return (
-            <section className="categories">
+            <section id="categories" className="categories">
                 <div className="wrapper cat">
-                    <h2 className="sectionHeading">Pick a Category</h2>
-                    <button className="categoryButton cat--Sport" onClick={this.updateUserChoice} id="6075" value="Sports">sport</button>
-                    <button className="categoryButton cat--Nature" onClick={this.updateUserChoice} id="18330" value="Nature">Nature</button>
-                    <button className="categoryButton cat--Culture" onClick={this.updateUserChoice} id="162710" value="Culture">Culture</button>
-                    <button className="categoryButton cat--Music"onClick={this.updateUserChoice} id="6027" value="Music">Music</button>
-                    <button className="categoryButton cat--War"onClick={this.updateUserChoice} id="6091" value="War">War</button>
-                    <button className="categoryButton cat--Justice" onClick={this.updateUserChoice} id="15108" value="Social Justice">Social Justice</button>
-                    <button className="categoryButton cat--Art" onClick={this.updateUserChoice} id="14893" value="Art">Art</button>
-                    <button className="categoryButton cat--Architecture" onClick={this.updateUserChoice} id="12436" value="biography">Architecture</button>
+                    <div>
+                        <h2 className="sectionHeading">Pick a Category</h2>
+                    </div>
+                    <div className="buttonSection">
+                        <button className="categoryButton cat--Sport" onClick={this.updateUserChoice} id="6075" value="Sports">sport</button>
+                        <button className="categoryButton cat--Nature" onClick={this.updateUserChoice} id="18330" value="Nature">Nature</button>
+                        <button className="categoryButton cat--Culture" onClick={this.updateUserChoice} id="162710" value="Culture">Culture</button>
+                        <button className="categoryButton cat--Music"onClick={this.updateUserChoice} id="6027" value="Music">Music</button>
+                        <button className="categoryButton cat--War"onClick={this.updateUserChoice} id="6091" value="War">War</button>
+                        <button className="categoryButton cat--Justice" onClick={this.updateUserChoice} id="15108" value="Social Justice">Social Justice</button>
+                        <button className="categoryButton categoryButton__last cat--Art" onClick={this.updateUserChoice} id="14893" value="Art">Art</button>
+                        <button className="categoryButton categoryButton__last cat--Architecture" onClick={this.updateUserChoice} id="12436" value="biography">Architecture</button>
+                    </div>
                 </div>
             </section>
         )

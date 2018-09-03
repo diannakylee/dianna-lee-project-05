@@ -185,64 +185,108 @@ button {
 
 /* Navigation */
 .navigation {
-  position: absolute;
-  right: 0; }
+  position: fixed;
+  width: 100%;
+  z-index: 101; }
 
-.navigation ul {
+.navUL {
   display: flex;
   list-style: none;
   margin-top: 30px;
-  margin-right: 40px; }
+  justify-content: flex-end; }
 
 .navigation ul li a {
-  color: white;
+  color: gold;
+  font-size: 2rem;
+  text-shadow: 1px 1px #e0626c;
   text-decoration: none;
-  padding: 5px 15px; }
+  padding: 5px 0 5px 30px; }
 
 .navigation ul li a:hover {
   color: lightblue; }
 
 /* Navigation */
 .navigation {
-  position: absolute;
-  right: 0; }
+  position: fixed;
+  width: 100%;
+  z-index: 101; }
 
-.navigation ul {
+.navUL {
   display: flex;
   list-style: none;
   margin-top: 30px;
-  margin-right: 40px; }
+  justify-content: flex-end; }
 
 .navigation ul li a {
-  color: white;
+  color: gold;
+  font-size: 2rem;
+  text-shadow: 1px 1px #e0626c;
   text-decoration: none;
-  padding: 5px 15px; }
+  padding: 5px 0 5px 30px; }
 
 .navigation ul li a:hover {
   color: lightblue; }
 
 /* Categories Page */
 .categories {
-  background: white; }
+  background: white;
+  height: 100vh; }
 
-.categories .wrapper {
+.cat {
+  height: 100vh;
   display: flex;
-  /* justify-content: center; */
-  align-items: center;
-  flex-wrap: wrap; }
+  flex-direction: column;
+  justify-content: center; }
+  @media (max-width: 480px) {
+    .cat {
+      width: 100%; } }
 
 .sectionHeading, .filmTitle {
-  flex-basis: 100%; }
+  flex-basis: 100%;
+  text-align: left; }
+
+.buttonSection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; }
 
 .categoryButton {
-  width: calc(100% / 4 - 20px);
+  width: calc(100% / 4 - 10px);
   height: 200px;
   display: block;
-  margin: 10px;
-  color: white;
+  margin: 2.5px 5px;
+  color: gold;
+  font-weight: 700;
+  text-shadow: 2px 4px white;
   font-size: 2.4rem;
   text-transform: uppercase;
   font-family: "Karla"; }
+  @media (max-width: 900px) {
+    .categoryButton {
+      width: calc(100% / 3 - 10px); } }
+  @media (max-width: 570px) {
+    .categoryButton {
+      width: calc(100% / 2 - 10px);
+      height: 150px; } }
+  @media (max-width: 480px) {
+    .categoryButton {
+      width: 100%;
+      height: 70px;
+      margin: 0;
+      border-radius: 0; } }
+
+@media (max-width: 900px) {
+  .categoryButton__last {
+    width: calc(100% / 2 - 10px); } }
+
+@media (max-width: 570px) {
+  .categoryButton__last {
+    height: 150px; } }
+
+@media (max-width: 480px) {
+  .categoryButton__last {
+    width: 100%;
+    height: 70px; } }
 
 .categoryButton:hover {
   cursor: pointer;
@@ -283,42 +327,137 @@ button {
   background-size: cover; }
 
 /* Display Film */
+.displayResults {
+  padding: 50px 0; }
+
 .displayResults .wrapper {
   display: flex;
   flex-wrap: wrap;
-  flex: 1 0 auto; }
+  flex-direction: column; }
 
-.eachFilm {
+.filmSection {
   display: flex;
   flex-wrap: wrap;
-  width: calc(100% / 3 - 20px);
+  justify-content: space-between; }
+
+.eachFilm {
+  width: calc(100% / 4 - 20px);
   margin: 10px;
-  background: rgba(255, 255, 255, 0.4);
-  border-radius: 15px; }
+  background: rgba(0, 0, 0, 0.7);
+  position: relative; }
 
-.eachFilm figure {
-  width: 150px; }
+.filmTitle h3 {
+  text-align: center;
+  color: gold;
+  line-height: 2.2rem; }
 
-.filmTitle {
-  text-align: center; }
+.displayButton {
+  background: gold;
+  width: 50px;
+  height: 50px;
+  font-size: 2rem;
+  border-radius: 100%;
+  position: absolute;
+  top: -30px;
+  right: -15px;
+  z-index: 99;
+  transition: all 200ms; }
+  .displayButton:hover {
+    background: white;
+    color: gold; }
 
-.filmImage, .filmOptions {
-  width: 50%;
-  margin-left: 15px; }
+.displayButtonBottom {
+  top: 25px;
+  z-index: 99; }
+
+.landingPage {
+  height: 100vh; }
+
+.landingPage .wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  align-items: flex-end; }
+  @media (max-width: 736px) {
+    .landingPage .wrapper {
+      align-items: center; } }
+
+.landingPage .wrapper h1 {
+  color: gold; }
+  @media (max-width: 736px) {
+    .landingPage .wrapper h1 {
+      font-size: 5.2rem; } }
+  @media (max-width: 570px) {
+    .landingPage .wrapper h1 {
+      font-size: 4rem; } }
+
+.landingPage .wrapper h2 {
+  color: white;
+  text-transform: lowercase; }
+  @media (max-width: 736px) {
+    .landingPage .wrapper h2 {
+      font-size: 2.4rem; } }
+  @media (max-width: 570px) {
+    .landingPage .wrapper h2 {
+      font-size: 1.8rem; } }
+
+.start {
+  background: gold;
+  transition: all 400ms;
+  width: 200px;
+  padding: 8px 0; }
+
+.hoverReveal {
+  display: none;
+  transition: all 600ms; }
+
+.start:hover {
+  background-color: white; }
+
+.start:hover span {
+  display: inline; }
 
 /* Saved Film */
 .savedResults {
-  background-color: white; }
+  background-color: white;
+  padding: 50px; }
+
+.savedFilms {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; }
+
+.eachFilm--saved {
+  width: 48%;
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+  margin: 2.5% 0;
+  border: 3px solid gold; }
+
+.savedFilmImage {
+  width: 40%;
+  margin: 15px; }
 
 .savedFilmInfo {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  justify-content: center;
   padding: 10px; }
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Karla", sans-serif;
-  font-size: 1.6rem;
-  background-image: url("./assets/joshua-hanks-661672-unsplash.jpg");
-  background-size: cover;
-  background-attachment: fixed; }
+.deleteButton {
+  background: gold;
+  width: 50px;
+  height: 50px;
+  font-size: 2rem;
+  border-radius: 100%;
+  position: absolute;
+  bottom: -20px;
+  right: -15px;
+  z-index: 99;
+  transition: all 200ms; }
+  .deleteButton:hover {
+    background: white;
+    color: gold; }
