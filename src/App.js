@@ -50,7 +50,6 @@ class App extends Component {
       savedList: savedFilms,
       savedFilms: savedFilms.length
     });  
-    console.log("state saved films", this.state.savedFilms);
     // use length of the saved list to use as a counter for the saved films counter in header
   }
   categoryName = (value) => {
@@ -72,7 +71,6 @@ class App extends Component {
     filmDBRef.remove();
   }
 
-
   // function passed into category search.
   addToFilmList = (list) => {
       const newList = Array.from(list);
@@ -84,19 +82,14 @@ class App extends Component {
     return (
       <HashRouter>
         <div className="App">
-          <NavBar savedFilms={this.state.savedFilms}/>
-          {/* <header>
-            <h1>Let's be real</h1>
-            <Link to="/">Home</Link>
-          </header> */}
+          <NavBar savedFilms={this.state.savedFilms} reference={this.state.reference}/>
           <div className="siteContent">
-            {/* <LandingPage /> */}
             {/* <Route exact path="" component={LandingPage} /> */}
             <CategorySearch addToFilmList={this.addToFilmList} categoryName={this.categoryName}/>
             {/* <Route path="/categories" component={CategorySearch} addToFilmList={this.addToFilmList} /> */}
             <DisplayFilm filmList={this.state.filmList} saveToDatabase={this.saveToDatabase} genreName={this.state.genreName}/>
             {/* <Route path="/results" component={DisplayFilm} filmList={this.state.filmList} saveToDatabase={this.saveToDatabase} /> */}
-            <SavedFilms savedList={this.state.savedList} deleteFilm={this.deleteFilm} />
+            <SavedFilms savedList={this.state.savedList} deleteFilm={this.deleteFilm} saveSection={this.saveSection} />
             {/* <Route path="/saved" component={SavedFilms} savedList={this.state.savedList} deleteFilm={this.deleteFilm} /> */}
             <Footer />
           </div>
@@ -107,10 +100,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-// {/* <LandingPage />
-//   <CategorySearch addToFilmList={this.addToFilmList} />
-//   <DisplayFilm filmList={this.state.filmList} saveToDatabase={this.saveToDatabase} />
-//           {/* <MoreInfo /> */ }
-// <SavedFilms savedList={this.state.savedList} deleteFilm={this.deleteFilm} /> */}

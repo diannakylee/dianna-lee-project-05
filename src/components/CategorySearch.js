@@ -15,18 +15,20 @@ class CategorySearch extends Component {
             categoryChoice: "",
             categoryGenre: "",
             filmList: []
+
         }
     }
     updateUserChoice = (e) => {
         e.preventDefault();
         let chosenCategory = e.target.id;
         let chosenGenre = e.target.value;
-        console.log(`what is this`, e.target.id);
+        this.props.categoryName(chosenGenre);
+        // console.log(`what is this`, e.target.id);
         scrollToComponent(this.Next, { offset: 0, align: 'top', duration: 500, ease: 'inCirc' });
         
         this.setState({
             categoryChoice: chosenCategory,
-            categoryGenre: chosenCategory
+            categoryGenre: chosenGenre
         }, () => {
             this.searchFilms();
         });        
@@ -80,7 +82,7 @@ class CategorySearch extends Component {
                         <button className="categoryButton cat--Culture" onClick={this.updateUserChoice} id="162710" value="Culture">Culture</button>
                         <button className="categoryButton cat--Music"onClick={this.updateUserChoice} id="6027" value="Music">Music</button>
                         <button className="categoryButton cat--War"onClick={this.updateUserChoice} id="6091" value="War">War</button>
-                        <button className="categoryButton cat--Justice" onClick={this.updateUserChoice} id="15108" value="Social Justice">Social Justice</button>
+                        <button className="categoryButton cat--Justice" onClick={this.updateUserChoice} id="15108" value="Crime">Crime</button>
                         <button className="categoryButton categoryButton__last cat--Art" onClick={this.updateUserChoice} id="14893" value="Art">Art</button>
                         <button className="categoryButton categoryButton__last cat--Architecture" onClick={this.updateUserChoice} id="12436" value="biography">Architecture</button>
                     </div>

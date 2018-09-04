@@ -31,12 +31,13 @@
     height: 200px;
     display: block;
     margin: 2.5px 5px;
-    color: gold;
+    color: white;
     font-weight: 700;
-    text-shadow: 2px 4px white;
+    text-shadow: 2px 2px 1px gold;
     font-size: 2.4rem;
     text-transform: uppercase;
     font-family: "Karla";
+    transition: all 200ms;
     @include bp(900) {
         width: calc(100% / 3 - 10px);
     }
@@ -100,7 +101,7 @@
 }
 
 .cat--Justice {
-    background-image: url("./assets/clem-onojeghuo-381204-justice.jpg");
+    background-image: url("./assets/christopher-burns-360256-unsplash.jpg");
     background-size: cover;
 }
 

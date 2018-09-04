@@ -13,7 +13,8 @@ class SavedFilms extends Component {
         super(props);
         this.state = {
             savedList: [],
-            open: false
+            open: false,
+            reference: "{(section) => { this.savedResults = section; }}"
         }
     }
     // this function converts the props passed over from the app and sets it as the state of this component.
@@ -30,12 +31,14 @@ class SavedFilms extends Component {
     onCloseModal = () => {
         this.setState({ open: false });
     };
-
+    saveSection = () => {
+        let saveRef = this.state.reference
+    }
 // render a div for each film
     render () {
         const { open } = this.state;
         return (
-            <section id="saved" className="savedResults">
+            <section id="saved" className="savedResults" ref={(section) => { this.savedResults = section; }}>
                 <div className="wrapper">
                     <h2 className="sectionHeading">Your Saved Films</h2>
                     <div className="savedFilms">
@@ -53,7 +56,9 @@ class SavedFilms extends Component {
                                         <div className="modalBox">
                                             <div style={styles}>
                                                 <Modal open={open} onClose={this.onCloseModal} center>
-                                                    <p>{film.film.overview}</p>
+                                                    <div className="modalDiv$">
+                                                        <p>{film.film.overview}</p>
+                                                    </div>
                                                 </Modal>
                                             </div>
                                         </div>

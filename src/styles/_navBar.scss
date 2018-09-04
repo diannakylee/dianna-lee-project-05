@@ -4,6 +4,9 @@
     position: fixed;
     width: 100%;
     z-index: 101;
+    @include bp (570) {
+        background: white;
+    }
 }
 
 .navUL {
@@ -11,6 +14,9 @@
     list-style: none;
     margin-top: 30px;
     justify-content: flex-end;
+    @include bp (570) {
+        margin-top: 10px;
+    }
 }
 
 .navigation ul li a {
@@ -18,7 +24,7 @@
     font-size: 2rem;
     text-shadow: 1px 1px 1px gold;
     text-decoration: none;
-    padding: 5px 0 5px 30px;
+    padding: 5px 0 5px 50px;
 }
 
 .navigation ul li a:hover {
@@ -35,5 +41,11 @@
     background: gold;
     position: absolute;
     top: 2px;
-    left: 5px;
+    left: 25px;
+}
+
+.largeNav {
+    @include bp(570) {
+        display: none;
+    }
 }

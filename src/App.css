@@ -191,19 +191,25 @@ button {
   position: fixed;
   width: 100%;
   z-index: 101; }
+  @media (max-width: 570px) {
+    .navigation {
+      background: white; } }
 
 .navUL {
   display: flex;
   list-style: none;
   margin-top: 30px;
   justify-content: flex-end; }
+  @media (max-width: 570px) {
+    .navUL {
+      margin-top: 10px; } }
 
 .navigation ul li a {
   color: grey;
   font-size: 2rem;
   text-shadow: 1px 1px 1px gold;
   text-decoration: none;
-  padding: 5px 0 5px 30px; }
+  padding: 5px 0 5px 50px; }
 
 .navigation ul li a:hover {
   color: lightblue; }
@@ -218,7 +224,11 @@ button {
   background: gold;
   position: absolute;
   top: 2px;
-  left: 5px; }
+  left: 25px; }
+
+@media (max-width: 570px) {
+  .largeNav {
+    display: none; } }
 
 /* Categories Page */
 .categories {
@@ -248,12 +258,13 @@ button {
   height: 200px;
   display: block;
   margin: 2.5px 5px;
-  color: gold;
+  color: white;
   font-weight: 700;
-  text-shadow: 2px 4px white;
+  text-shadow: 2px 2px 1px gold;
   font-size: 2.4rem;
   text-transform: uppercase;
-  font-family: "Karla"; }
+  font-family: "Karla";
+  transition: all 200ms; }
   @media (max-width: 900px) {
     .categoryButton {
       width: calc(100% / 3 - 10px); } }
@@ -308,7 +319,7 @@ button {
   background: linear-gradient(0, 0, 0, 0.4); }
 
 .cat--Justice {
-  background-image: url("./assets/clem-onojeghuo-381204-justice.jpg");
+  background-image: url("./assets/christopher-burns-360256-unsplash.jpg");
   background-size: cover; }
 
 .cat--Art {

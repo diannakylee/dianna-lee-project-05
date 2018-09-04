@@ -23,7 +23,7 @@ class DisplayFilm extends Component {
     }
     saveGenre = (prop) => {
         let genre = this.props.genreName
-        console.log(`genrename`, genre);
+        console.log(`genre name`, genre);
         
         this.setState ({
             genreName: genre
