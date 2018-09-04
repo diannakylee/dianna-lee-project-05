@@ -22,6 +22,10 @@
         width: calc(100% / 2 - 30px);
         margin: 15px;
     }
+    @include bp (570) {
+        width: 100%;
+        flex-direction: row;
+    }
 }
 
 .savedFilmImage {

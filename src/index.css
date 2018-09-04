@@ -504,6 +504,10 @@ button {
     .eachFilm--saved {
       width: calc(100% / 2 - 30px);
       margin: 15px; } }
+  @media (max-width: 570px) {
+    .eachFilm--saved {
+      width: 100%;
+      flex-direction: row; } }
 
 .savedFilmImage {
   width: 100%;
