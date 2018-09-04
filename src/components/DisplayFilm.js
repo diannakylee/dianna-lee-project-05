@@ -2,26 +2,40 @@ import React, {Component} from 'react';
 import CategorySearch from './CategorySearch'
 import App from '../App'
 import firebase from 'firebase';
-// import NavBar from './NavBar';
+import Modal from 'react-responsive-modal';
+import scrollToComponent from 'react-scroll-to-component';
+
 
 class DisplayFilm extends Component {
     
     constructor(props){
         super(props);
         this.state = {
-            savedList: []
+            savedList: [],
+            genreName: "",
+            open: false
         }
     }
+
     saveFilm = (e,film) => {
         e.preventDefault();
         this.props.saveToDatabase(film);
     }
+    saveGenre = (prop) => {
+        let genre = this.props.genreName
+        console.log(`genrename`, genre);
+        
+        this.setState ({
+            genreName: genre
+        })
+    }
     render() {
+        const { open } = this.state;
         return (
-            <section className="displayResults">
+            <section id="results" className="displayResults">
                 <div className="wrapper">
                     <div>
-                        <h2 className="sectionHeading">You should watch these...</h2>
+                        <h2 className="sectionHeading headingDarkBG">You should watch these {this.state.genreName} films...</h2>
                     </div>
                     <div className="filmSection">
                     {this.props.filmList.map((film) => {
@@ -31,19 +45,11 @@ class DisplayFilm extends Component {
                                     <img src={`http://image.tmdb.org/t/p/w500/${film.poster_path}`} alt=""/>
                                 </figure>
                                 <div className="filmInfo">
-                                    <div className="filmTitle">
-                                        <h3>{film.title}</h3>
-                                    </div>
+                                    <h3 className="headingDarkBG">{film.title}</h3>
                                     <div className="filmOptions">
-                                        {/* <div>
-                                            <p>Release Date:</p>
-                                            <p>{film.release_date}</p>
-                                        </div> */}
                                         <div>
-                                            <button className="displayButton displayButtonTop moreInfoButton"><i class="fas fa-info"></i></button>
+                                            <p className="filmSynopsis">{film.overview}</p>
                                         </div>
-                                        {/* <MoreInfo /> */}
-                                        {/* <p className="filmSynopsis">{film.overview}</p> */}
                                         <div>
                                             <button onClick={(e) => this.saveFilm(e, film)} id={film.id} className=" displayButton displayButtonBottom saveButton"><i class="far fa-save"></i></button>
                                         </div>

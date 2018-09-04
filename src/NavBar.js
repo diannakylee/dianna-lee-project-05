@@ -1,23 +1,23 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import {
+    Route,
+    NavLink,
+    HashRouter
+} from "react-router-dom";
 
-const NavBar = () => {
+const NavBar = (props) => {
     return (
         <section className="navigation">
             <div className="wrapper">
                 <nav className="navTop">
+                    <div>
+                        <h1></h1>
+                    </div>
                     <ul className="navUL">
-                        <li>
-                            {/* <Link to="/">Home</Link> */}
-                            <a href="#home">Home</a>
-                        </li>
-                        <li>
-                            <a href="#categories">Categories</a>
-                            {/* <Link to="/categories"><i class="fas fa-video"></i>Categories</Link> */}
-                        </li>
-                        <li>
-                            <a href="#saved">Saved Films</a>
-                            {/* <Link to="/saved"><i class="fas fa-save"></i>Saved</Link> */}
+                        <li className="savedItem">
+                            {/* <a href="#saved">Saved Films</a> */}
+                            <NavLink to="#saved">Saved</NavLink>
+                            <div className="savedNumber">{props.savedFilms}</div>
                         </li>
                     </ul>
                 </nav>

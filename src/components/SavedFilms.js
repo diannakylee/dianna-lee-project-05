@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import App from '../App';
 // import NavBar from './NavBar';
+import Modal from 'react-responsive-modal';
+
+
+const styles = {
+    textAlign: "center",
+};
 
 class SavedFilms extends Component {
     constructor (props) {
         super(props);
         this.state = {
-            savedList: []
+            savedList: [],
+            open: false
         }
     }
     // this function converts the props passed over from the app and sets it as the state of this component.
@@ -17,9 +24,16 @@ class SavedFilms extends Component {
             savedList: props.savedList           
         }
     }
+    onOpenModal = () => {
+        this.setState({ open: true });
+    };
+    onCloseModal = () => {
+        this.setState({ open: false });
+    };
 
 // render a div for each film
     render () {
+        const { open } = this.state;
         return (
             <section id="saved" className="savedResults">
                 <div className="wrapper">
@@ -33,12 +47,17 @@ class SavedFilms extends Component {
                                         <img src={`http://image.tmdb.org/t/p/w500/${film.film.poster_path}`} alt="" />
                                     </figure>
                                     <div className="savedFilmInfo">
-                                        <div className="filmTitle">
+                                        <div className="filmTitleSaved">
                                             <h3>{film.film.title}</h3>
                                         </div>
-                                        <div>
-                                            <p>{film.film.overview}</p>
+                                        <div className="modalBox">
+                                            <div style={styles}>
+                                                <Modal open={open} onClose={this.onCloseModal} center>
+                                                    <p>{film.film.overview}</p>
+                                                </Modal>
+                                            </div>
                                         </div>
+                                        <button onClick={this.onOpenModal} className=" displayButtonTop moreInfoButton"><i class="fas fa-info"></i></button>
                                         <button class="deleteButton" onClick={() => this.props.deleteFilm(film.key)} id={film.key}><i class="fas fa-trash-alt"></i></button>
                                     </div>
                                 </div>

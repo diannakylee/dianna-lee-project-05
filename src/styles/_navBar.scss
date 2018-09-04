@@ -14,13 +14,26 @@
 }
 
 .navigation ul li a {
-    color: gold;
+    color: grey;
     font-size: 2rem;
-    text-shadow: 1px 1px rgb(224, 98, 108);
+    text-shadow: 1px 1px 1px gold;
     text-decoration: none;
     padding: 5px 0 5px 30px;
 }
 
 .navigation ul li a:hover {
     color: lightblue;
+}
+
+.savedItem {
+    position: relative;
+}
+.savedNumber {
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background: gold;
+    position: absolute;
+    top: 2px;
+    left: 5px;
 }

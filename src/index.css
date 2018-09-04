@@ -153,6 +153,9 @@ h3 {
   font-size: 1.8rem;
   font-family: "Karla", sans-serif; }
 
+.footer {
+  font-size: 1.2rem; }
+
 body {
   margin: 0;
   padding: 0;
@@ -196,14 +199,26 @@ button {
   justify-content: flex-end; }
 
 .navigation ul li a {
-  color: gold;
+  color: grey;
   font-size: 2rem;
-  text-shadow: 1px 1px #e0626c;
+  text-shadow: 1px 1px 1px gold;
   text-decoration: none;
   padding: 5px 0 5px 30px; }
 
 .navigation ul li a:hover {
   color: lightblue; }
+
+.savedItem {
+  position: relative; }
+
+.savedNumber {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  background: gold;
+  position: absolute;
+  top: 2px;
+  left: 5px; }
 
 /* Navigation */
 .navigation {
@@ -218,14 +233,26 @@ button {
   justify-content: flex-end; }
 
 .navigation ul li a {
-  color: gold;
+  color: grey;
   font-size: 2rem;
-  text-shadow: 1px 1px #e0626c;
+  text-shadow: 1px 1px 1px gold;
   text-decoration: none;
   padding: 5px 0 5px 30px; }
 
 .navigation ul li a:hover {
   color: lightblue; }
+
+.savedItem {
+  position: relative; }
+
+.savedNumber {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  background: gold;
+  position: absolute;
+  top: 2px;
+  left: 5px; }
 
 /* Categories Page */
 .categories {
@@ -341,10 +368,43 @@ button {
   justify-content: space-between; }
 
 .eachFilm {
-  width: calc(100% / 4 - 20px);
+  width: calc(100% / 2 - 20px);
   margin: 10px;
   background: rgba(0, 0, 0, 0.7);
-  position: relative; }
+  position: relative;
+  display: flex; }
+  @media (max-width: 736px) {
+    .eachFilm {
+      width: 100%;
+      margin-bottom: 15px; } }
+
+.filmImage {
+  width: 50%; }
+  @media (max-width: 736px) {
+    .filmImage {
+      width: 30%; } }
+
+.filmInfo {
+  width: 50%; }
+  @media (max-width: 736px) {
+    .filmInfo {
+      width: 70%; } }
+
+.filmInfo {
+  color: white;
+  padding: 15px;
+  text-align: left;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.filmTitle {
+  display: inline-block; }
+
+.headingDarkBG {
+  color: gold; }
 
 .filmTitle h3 {
   text-align: center;
@@ -358,17 +418,16 @@ button {
   font-size: 2rem;
   border-radius: 100%;
   position: absolute;
-  top: -30px;
+  bottom: 20px;
   right: -15px;
   z-index: 99;
   transition: all 200ms; }
   .displayButton:hover {
     background: white;
     color: gold; }
-
-.displayButtonBottom {
-  top: 25px;
-  z-index: 99; }
+  @media (max-width: 736px) {
+    .displayButton {
+      bottom: -10px; } }
 
 .landingPage {
   height: 100vh; }
@@ -384,13 +443,15 @@ button {
       align-items: center; } }
 
 .landingPage .wrapper h1 {
-  color: gold; }
+  color: gold;
+  text-shadow: 4px 3px 3px black; }
   @media (max-width: 736px) {
     .landingPage .wrapper h1 {
       font-size: 5.2rem; } }
   @media (max-width: 570px) {
     .landingPage .wrapper h1 {
-      font-size: 4rem; } }
+      font-size: 4rem;
+      text-align: center; } }
 
 .landingPage .wrapper h2 {
   color: white;
@@ -407,6 +468,10 @@ button {
   transition: all 400ms;
   width: 200px;
   padding: 8px 0; }
+
+.start a {
+  text-decoration: none;
+  color: black; }
 
 .hoverReveal {
   display: none;
@@ -429,35 +494,48 @@ button {
   justify-content: space-between; }
 
 .eachFilm--saved {
-  width: 48%;
+  width: calc(100% / 4 - 20px);
   display: flex;
-  justify-content: flex-start;
+  flex-direction: column;
   position: relative;
-  margin: 2.5% 0;
-  border: 3px solid gold; }
+  margin: 5px;
+  border: 5px solid gold; }
+  @media (max-width: 736px) {
+    .eachFilm--saved {
+      width: calc(100% / 2 - 30px);
+      margin: 15px; } }
 
 .savedFilmImage {
-  width: 40%;
-  margin: 15px; }
+  width: 100%;
+  padding: 5px; }
 
 .savedFilmInfo {
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: 100%;
   justify-content: center;
-  padding: 10px; }
+  padding: 10px;
+  color: black; }
 
-.deleteButton {
+.filmTitleSaved h3 {
+  line-height: 2rem; }
+
+.deleteButton, .moreInfoButton {
   background: gold;
+  border: 3px solid gold;
   width: 50px;
   height: 50px;
   font-size: 2rem;
   border-radius: 100%;
   position: absolute;
-  bottom: -20px;
-  right: -15px;
+  top: 25px;
+  left: -25px;
   z-index: 99;
   transition: all 200ms; }
-  .deleteButton:hover {
+  .deleteButton:hover, .moreInfoButton:hover {
     background: white;
     color: gold; }
+
+.moreInfoButton {
+  position: absolute;
+  top: -30px; }

@@ -2,15 +2,19 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import firebase from './firebase';
 import './App.css';
+import {
+  Route,
+  NavLink,
+  HashRouter
+} from "react-router-dom";
+
+// Import Components
 import CategorySearch from './components/CategorySearch';
 import LandingPage from './functions/LandingPage';
 import DisplayFilm from './components/DisplayFilm';
 import SavedFilms from './components/SavedFilms'
 import NavBar from './NavBar';
-import {
-  BrowserRouter as Router,
-  Route, Link
-} from 'react-router-dom';
+import Footer from './functions/Footer';
 
 const dbRef = firebase.database().ref();
 
@@ -19,7 +23,9 @@ class App extends Component {
     super();
     this.state = {
       filmList: [],
-      savedList: []
+      savedList: [],
+      genreName: "",
+      savedFilms: "",
     }
   }
   componentDidMount(){
@@ -41,12 +47,18 @@ class App extends Component {
                           });
                         });
     this.setState ({
-      savedList: savedFilms
+      savedList: savedFilms,
+      savedFilms: savedFilms.length
     });  
-    console.log("state saved films", this.state.savedList);
+    console.log("state saved films", this.state.savedFilms);
     // use length of the saved list to use as a counter for the saved films counter in header
   }
-
+  categoryName = (value) => {
+    const catName = value;
+    this.setState ({
+      genreName: catName
+    });
+  }
   // this is a function set up to save films into firebase.  Used to pass down to Display Films.
   saveToDatabase = (film) => {
     dbRef.push({
@@ -60,11 +72,6 @@ class App extends Component {
     filmDBRef.remove();
   }
 
-  // function to keep count of number of films saved in firebase.
-  savedFilmCounter = () => {
-    const countFilm = this.state.savedList.length;
-    console.log(`count film`, countFilm);
-  }
 
   // function passed into category search.
   addToFilmList = (list) => {
@@ -75,23 +82,26 @@ class App extends Component {
   }
   render() {
     return (
-      // <Router>
+      <HashRouter>
         <div className="App">
-          <NavBar />
+          <NavBar savedFilms={this.state.savedFilms}/>
           {/* <header>
             <h1>Let's be real</h1>
             <Link to="/">Home</Link>
           </header> */}
-          <LandingPage />
-          {/* <Route exact path="" component={LandingPage} /> */}
-          <CategorySearch addToFilmList={this.addToFilmList} />
-          {/* <Route exact path="/categories" component={CategorySearch} /> */}
-          <DisplayFilm filmList={this.state.filmList} saveToDatabase={this.saveToDatabase} />
-          {/* <Route exact path="/results" component={DisplayFilm} /> */}
-          <SavedFilms savedList={this.state.savedList} deleteFilm={this.deleteFilm} />
-          {/* <Route exact path="/saved" component={SavedFilms} /> */}
+          <div className="siteContent">
+            {/* <LandingPage /> */}
+            {/* <Route exact path="" component={LandingPage} /> */}
+            <CategorySearch addToFilmList={this.addToFilmList} categoryName={this.categoryName}/>
+            {/* <Route path="/categories" component={CategorySearch} addToFilmList={this.addToFilmList} /> */}
+            <DisplayFilm filmList={this.state.filmList} saveToDatabase={this.saveToDatabase} genreName={this.state.genreName}/>
+            {/* <Route path="/results" component={DisplayFilm} filmList={this.state.filmList} saveToDatabase={this.saveToDatabase} /> */}
+            <SavedFilms savedList={this.state.savedList} deleteFilm={this.deleteFilm} />
+            {/* <Route path="/saved" component={SavedFilms} savedList={this.state.savedList} deleteFilm={this.deleteFilm} /> */}
+            <Footer />
+          </div>
         </div>
-      // </Router>
+      </HashRouter>
     );
   }
 }
